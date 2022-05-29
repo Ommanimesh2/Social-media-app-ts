@@ -1,0 +1,20 @@
+.btn-5 {
+    width: 130px;
+    height: 40px;
+    line-height: 42px;
+    padding: 0;
+    border: none;
+    border-radius: 10px;
+    background: rgb(255,27,0);
+    transition: 0.7s;
+  background: linear-gradient(0deg, rgba(255,27,0,1) 0%, rgba(251,75,2,1) 100%);
+  }
+  .btn-5:hover {
+    border: 2px solid white;
+  }
+  .logout{
+      margin-top: 4vh;
+      width: 140px;
+      margin-right: 2vw;
+  }
+  

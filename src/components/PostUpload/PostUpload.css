@@ -1,0 +1,12 @@
+.uploadingPost{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    padding: 5vh;
+    margin: 5vw 24vw;
+    background-color: red;
+    
+
+}
+
