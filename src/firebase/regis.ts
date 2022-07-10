@@ -6,3 +6,5 @@ interface Regis{
   profilePicture:string
 }
 export type {Regis}
+
+// types should only be in types folder

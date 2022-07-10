@@ -9,6 +9,8 @@ import Homepage from "./components/Homepage/Homepage";
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+// Why did we change from the default implemeentaion??
+// Like everything could have been inside <App />./
 root.render(
   <BrowserRouter>
     <Routes>

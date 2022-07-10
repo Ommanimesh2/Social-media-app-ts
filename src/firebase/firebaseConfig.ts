@@ -58,3 +58,11 @@ export const logout = () => {
   signOut(auth);
   console.log("logged out successfully");
 };
+
+// Firebase folder structure should be better
+// firebase
+//    > firebaseConfig.ts
+//    > authService.ts
+//    > postService.ts
+//    ....
+// 

@@ -44,6 +44,8 @@ const Signup = () => {
     navigate('/login');
 }
 
+ /* WHY SO MUCH REPETITION OF CODE ?? create ClickHandler seperately and use everywhere and map can be used to to just iterate over the map to render */ 
+
   return (
     <>
       <form action="">

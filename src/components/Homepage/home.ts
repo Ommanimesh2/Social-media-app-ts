@@ -7,3 +7,5 @@ interface userData{
 
 }
 export type {userData}
+
+// types can only be inside types folder

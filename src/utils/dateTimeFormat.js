@@ -3,3 +3,5 @@ export function getFormattedDateTime(d) {
     d.getHours() + ":" + d.getMinutes();
     return datestring
  }
+
+ // Should have used ES6 and should have been ts.

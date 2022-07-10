@@ -2,6 +2,7 @@ import React from 'react'
 import { NavProps } from '../../types/navPropTypes'
 import Logout from '../Logout/Logout'
 import './Navbar.css'
+// destructure inside functional component
 const Navbar:React.FC<NavProps> = ({ name, imgURL, email }) => {
     return (
         <>

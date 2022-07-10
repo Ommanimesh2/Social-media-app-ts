@@ -13,3 +13,5 @@ export default function intersect(arr1, arr2) {
     }
     return commonValues
 }
+
+// Should have used ES6 and should have been ts.

@@ -4,3 +4,5 @@ interface ImgUpload{
     reference:string
 }
 export type {ImgUpload}
+
+// types should only be in types folder

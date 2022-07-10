@@ -17,8 +17,8 @@ const Login = () => {
   }
   return (
  <>
-
-    <form action="">
+  {/* Do we really need a form element */}
+    <form action=""> 
     <input
           className="lemail"
           onChange={(e) => {
@@ -35,10 +35,12 @@ const Login = () => {
           name="password"
           type="password"
         />
-    
+          {/* Use Button component for more intutiveness */}
           <input
             className="lsubmit"
             type="submit"
+            // Create seperate ClickHandlers
+            // use a loading state on button
             onClick={(e) => {
               e.preventDefault();
               loginUser()

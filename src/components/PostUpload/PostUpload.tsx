@@ -40,7 +40,7 @@ const PostUpload = ({ user,on,setOn }:{user:any,
       });
     }
   };
-
+  // why use css in tsx file
   const otherThanTheModel:CSS.Properties= {
     position: 'fixed',
     top: 0,
@@ -64,6 +64,7 @@ const PostUpload = ({ user,on,setOn }:{user:any,
         }}
       
       />
+      {/* WHY SO MUCH REPETITION OF CODE ?? create ClickHandler seperately and use everywhere and map can be used to to just iterate over the map to render */ }
       Select Genres: <br />
       Anime<input type="checkbox" className="Anime" onClick={(e:any) => {
         e.preventDefault()
@@ -120,6 +121,7 @@ const PostUpload = ({ user,on,setOn }:{user:any,
     document.getElementById("model") as HTMLInputElement
 
   ):<></>
+    // modal can be created in a easier way
 }
 
 export default PostUpload

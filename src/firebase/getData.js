@@ -5,22 +5,23 @@ import { query,where } from "firebase/firestore"
 export async function likeUpdater(id,user,e){
   e.target.innerHTML="❤️"
   try{
+    // create constants folder and put constants like collections name and etc.. in that folder within different files
     const likeExists= query(collectionGroup(db,"likePeople"), where("people","==",user))
-    const thing=await getDocs(likeExists)
+    const thing=await getDocs(likeExists) //Variable Names should make sense.
   let arr=[]
     thing.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
       arr.push(doc.data())
     });
   if(arr.length===0){
-
+      //Variable Names should make sense. name according to whose ref it is
       const ref=doc(db,"posts",id)
       
       const subref=collection(ref,"likePeople")
       await addDoc(subref,{
           people:user
         }) 
-    const hut=await getDoc(ref)
+    const hut=await getDoc(ref)//Variable Names should make sense.
     const prevlike=hut.data().likes
     await updateDoc(ref,{
         likes:prevlike+1,

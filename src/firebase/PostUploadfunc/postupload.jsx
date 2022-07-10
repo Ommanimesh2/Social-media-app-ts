@@ -30,4 +30,6 @@ async function postUpload(name,reference,genres){
 }
 }
 
+// Use ES6 and TS as well.
+
 export default postUpload

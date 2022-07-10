@@ -8,3 +8,5 @@ export  const getData= () =>
             'x-api-key': "3bea204f-d8c8-450b-8f2f-cd8bac3e8129"
         },
     })
+
+    // Should have used ES6 and should have been ts.

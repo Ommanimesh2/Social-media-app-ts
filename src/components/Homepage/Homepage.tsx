@@ -16,16 +16,17 @@ import { userData } from './home';
 const Homepage = () => {
   const [user, loading, error] = useAuthState(auth)
   // const [load, setLoad] = useState(true)
-  const [userData, setUserData] = useState<any>([])
+  const [userData, setUserData] = useState<any>([]) // why use any ??
   const [allPosts, setAllPosts] = useState<any>([])
 
-  const [upload, setupload] = useState(false)
+  const [upload, setupload] = useState(false) // define type
 
 
 
   useEffect(() => {
     const fetchUserName = async () => {
-
+      
+  //Variable Names should make sense.
       const q = query(collection(db, "users"), where("uid", "==", user?.uid));
       const doc = await getDocs(q);
       const data:any= doc.docs[0].data()
@@ -59,11 +60,12 @@ const Homepage = () => {
        getPostData()   
       setAllPosts(give)
   }, [loading])
-
+  // remove console.log before pushing to github
   console.log(userData)
   console.log(allPosts);
   const thisArr:any=[]
         for(let i=0;i<allPosts.length;i++){
+          // intersection was supposed to be done from firebase
           if(intersect(userData.intersets,allPosts[i].genres).length>=2){
             console.log(allPosts[i])
             thisArr.push(allPosts[i])
@@ -89,6 +91,7 @@ const Homepage = () => {
     <>
       
       <Navbar name={userData.displayName} imgURL={userData.photoURL} email={userData.email} />
+     {/* ClickHandler function can be made seperate */}
       <button onClick={()=>{
        setupload(true)
       }}>Upload</button>
