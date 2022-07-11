@@ -1,6 +1,6 @@
 import React from 'react'
-import { likeUpdater } from '../../firebase/getData'
-import { dislikeUpdater } from '../../firebase/getData'
+import { likeUpdater } from '../../services/firebase/getData'
+import { dislikeUpdater } from '../../services/firebase/getData'
 import { useState } from 'react'
 import './Showposts.css'
 const ShowPosts = ({ item, user }:any) => {

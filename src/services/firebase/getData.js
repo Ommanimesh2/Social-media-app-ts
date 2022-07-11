@@ -6,23 +6,23 @@ export async function likeUpdater(id,user,e){
   e.target.innerHTML="❤️"
   try{
     const likeExists= query(collectionGroup(db,"likePeople"), where("people","==",user))
-    const thing=await getDocs(likeExists)
+    const response=await getDocs(likeExists)
   let arr=[]
-    thing.forEach((doc) => {
+    response.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
       arr.push(doc.data())
     });
   if(arr.length===0){
 
-      const ref=doc(db,"posts",id)
+      const postRef=doc(db,"posts",id)
       
-      const subref=collection(ref,"likePeople")
-      await addDoc(subref,{
+      const subpostRef=collection(postRef,"likePeople")
+      await addDoc(subpostRef,{
           people:user
         }) 
-    const hut=await getDoc(ref)
-    const prevlike=hut.data().likes
-    await updateDoc(ref,{
+    const postRefResponse=await getDoc(postRef)
+    const prevlike=postRefResponse.data().likes
+    await updateDoc(postRef,{
         likes:prevlike+1,
         
     })
@@ -41,21 +41,21 @@ export async function dislikeUpdater(id,user,e){
     e.target.innerHTML="🤢"
     try{
         const dislikeExists= query(collectionGroup(db,"likePeople"), where("people","==",user))
-        const thing=await getDocs(dislikeExists)
+        const response=await getDocs(dislikeExists)
       let arr=[]
-        thing.forEach((doc) => {
+        response.forEach((doc) => {
           // doc.data() is never undefined for query doc snapshots
           arr.push(doc.data())
         });
-        const ref=doc(db,"posts",id)
-        const subref=collection(ref,"dislikePeople")
-        await addDoc(subref,{
+        const postRef=doc(db,"posts",id)
+        const subpostRef=collection(postRef,"dislikePeople")
+        await addDoc(subpostRef,{
             people:user
         })
         
-        const hut=await getDoc(ref)
-    const prevlike=hut.data().dislikes
-     await updateDoc(ref,{
+        const postRefResponse=await getDoc(postRef)
+    const prevlike=postRefResponse.data().dislikes
+     await updateDoc(postRef,{
      dislikes:prevlike+1,
 })
  

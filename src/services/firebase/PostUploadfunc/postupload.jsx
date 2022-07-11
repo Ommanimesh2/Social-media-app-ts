@@ -1,7 +1,7 @@
 import { db } from "../firebaseConfig";
 import { doc, updateDoc } from "firebase/firestore";
 import {collection, addDoc } from "firebase/firestore";
-import { getFormattedDateTime } from "../../utils/dateTimeFormat";
+import getFormattedDateTime from "../../../utils/dateTimeFormat";
 
 
 async function postUpload(name,reference,genres){
@@ -26,7 +26,7 @@ async function postUpload(name,reference,genres){
     console.log(ref);
   alert("post created")
 } catch (error) {
-    console.log("cannot add that")
+    console.log(error)
 }
 }
 

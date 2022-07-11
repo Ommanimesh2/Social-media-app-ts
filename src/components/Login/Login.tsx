@@ -1,5 +1,4 @@
-import { logIn } from '../../firebase/firebaseConfig';
-
+import { logIn } from '../../services/firebase/firebaseConfig';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css'
@@ -20,7 +19,7 @@ const Login = () => {
 
     <form action="">
     <input
-          className="lemail"
+          className="loginEmail"
           onChange={(e) => {
             setEmail(e.target.value);
           }}
@@ -28,7 +27,7 @@ const Login = () => {
           type="email"
         />
         <input
-          className="lpassword"
+          className="loginPassword"
           onChange={(e) => {
             setPassword(e.target.value);
           }}
@@ -37,7 +36,7 @@ const Login = () => {
         />
     
           <input
-            className="lsubmit"
+            className="loginSubmit"
             type="submit"
             onClick={(e) => {
               e.preventDefault();

@@ -1,7 +1,8 @@
-import { register } from "../../firebase/firebaseConfig";
+import { register } from "../../services/firebase/firebaseConfig";
 import React from "react";
 import { useState } from "react";
-import { getData } from '../../api/axios';
+import { getData } from "../../services/api/apiService";
+import userInterests from "../../constants/interestsArray";
 import { useNavigate } from 'react-router-dom';
 import './Signup.css'
 import uniqarr from "../../utils/uniquearr";
@@ -11,15 +12,21 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [profile,setProfile]=useState("")
   const [name,setName]=useState("")
-  const [interests,setInterests]=useState([]) 
+  const [interests,setInterests]=useState<String[]>([]) 
+
+  const clickHandler=(event:string)=>{
+    console.log(interests);
+    let events=event
+    setInterests((e: any) => [...e, events])
+  }
 
   const fetchData=async()=>{
     try {
       const resp= await getData()
-      setProfile(resp.data[0].url)
-      console.log(resp.data[0].url);
-    } catch (error) {
       
+
+    } catch (error) {
+      console.log(error)
     }
 }
   const registers=()=>{
@@ -39,22 +46,20 @@ const Signup = () => {
     }
   }
   const onRegisterSubmits = (e:any) => {
-   
-    // do what you want with your form data
     navigate('/login');
 }
 
   return (
     <>
-      <form action="">
-        <input className="stext"
+      
+        <input className="signupText"
         onClick={fetchData}
          onChange={(e:any) => {
           
             setName(e.target.value);
           }} name="name" type="text" />
         <input
-          className="semail"
+          className="signupEmail"
           onChange={(e:any) => {
             setEmail(e.target.value);
           }}
@@ -62,7 +67,7 @@ const Signup = () => {
           type="email"
         />
        <span className="pass">password:</span><input
-          className="spassword"
+          className="signupPassword"
           onChange={(e:any) => {
             setPassword(e.target.value);
           }}
@@ -70,77 +75,29 @@ const Signup = () => {
           type="password"
         />
         <div className="interests">
-           <input type="button" className="Anime"  onClick={(e:any)=>{
-             e.preventDefault()
-             const interest=e.target.className
-             console.log(interest)
-             setInterests((interests):any=>[...interests,interest])
-           }}/>Anime
-           <input type="button"  className="Movies"  onClick={(e:any)=>{
-             e.preventDefault()
-             const interest=e.target.className
-             console.log(interest)
-             setInterests((interests):any=>[...interests,interest])
-           }}/>Movies
-           <input type="button" className="Fashion"  onClick={(e:any)=>{
-             e.preventDefault()
-             const interest=e.target.className
-             console.log(interest)
-             setInterests((interests):any=>[...interests,interest])
-           }}/>Fashion
-           <input type="button" className="Technology"  onClick={(e:any)=>{
-             e.preventDefault()
-             const interest=e.target.className
-             console.log(interest)
-             setInterests((interests):any=>[...interests,interest])
-           }}/>Technology
-           <input type="button" className="Food"  onClick={(e:any)=>{
-             e.preventDefault()
-             const interest=e.target.className
-             console.log(interest)
-             setInterests((interests):any=>[...interests,interest])
-           }}/>Food
-           <input type="button" className="Science"  onClick={(e:any)=>{
-             e.preventDefault()
-             const interest=e.target.className
-             console.log(interest)
-             setInterests((interests):any=>[...interests,interest])
-           }}/>Science
-           <input type="button" className="Space"  onClick={(e:any)=>{
-             e.preventDefault()
-             const interest=e.target.className
-             console.log(interest)
-             setInterests((interests):any=>[...interests,interest])
-           }}/>Space
-           <input type="button" className="Gaming"  onClick={(e:any)=>{
-             e.preventDefault()
-             const interest=e.target.className
-             console.log(interest)
-             setInterests((interests):any=>[...interests,interest])
-           }}/>Gaming
+          {userInterests.map((e)=>{
+        return (
+          <>
+          {e}<input type="checkbox" onClick={()=>{
+            clickHandler(e)
+          }} /> 
+          </>
+        )
+      })}
         </div>
    
        
           <input
             type="submit"
-            className="ssubmit"
+            className="signupSubmit"
             onClick={(e:any) => {
               e.preventDefault();
               registers()
               onRegisterSubmits(e)
-              // {
-              //   createUserWithEmailAndPassword(auth, email, password)
-              //     .then((result) => {
-              //       console.log(result);
-              //     })
-              //     .catch((err) => {
-              //       console.log(err);
-              //     });
-              // }
             }}
           />
         
-      </form>
+
     </>
   );
 };

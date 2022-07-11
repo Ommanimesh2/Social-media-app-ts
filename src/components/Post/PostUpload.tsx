@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect } from "react";
 import ReactDom from 'react-dom'
 import './PostUpload.css'
+import postinterests from '../../constants/interestsArray';
 import { UploadProps } from '../../types/postUploadtype';
 import CSS from 'csstype';
 import {
@@ -13,7 +14,7 @@ import {
 } from "firebase/storage";
 import { getStorage } from 'firebase/storage';
 import { v4 } from "uuid";
-import postUpload from '../../firebase/PostUploadfunc/postupload.jsx';
+import postUpload from '../../services/firebase/PostUploadfunc/postupload';
 import uniqarr from '../../utils/uniquearr';
 
 const PostUpload = ({ user,on,setOn }:{user:any,
@@ -21,8 +22,13 @@ const PostUpload = ({ user,on,setOn }:{user:any,
   const storage = getStorage()
   const [PostUpload, setPostUpload] = useState<any>(null);
   const [PostUrls, setPostUrls] = useState<string[]>([]);
-  const [genres, setGenres] = useState<string[]>([])
+  const [genres, setGenres] = useState<any>([])
   const postListRef = ref(storage, "posts/");
+  const clickHandler=(event:string)=>{
+    let events=event
+    console.log(genres);
+    setGenres((e: any) => [...e, events])
+  }
   const uploadFile = () => {
     if (PostUpload == null) { alert("please choose a file") }
     else if (PostUpload != null && genres.length === 0) {
@@ -65,7 +71,16 @@ const PostUpload = ({ user,on,setOn }:{user:any,
       
       />
       Select Genres: <br />
-      Anime<input type="checkbox" className="Anime" onClick={(e:any) => {
+      {postinterests.map((e)=>{
+        return (
+          <>
+          {e}<input type="checkbox" onClick={()=>{
+            clickHandler(e)
+          }} /> 
+          </>
+        )
+      })}
+      {/* Anime<input type="checkbox" className="Anime" onClick={(e:any) => {
         e.preventDefault()
         const genres:string = e.target.className
         console.log(genres)
@@ -107,7 +122,8 @@ const PostUpload = ({ user,on,setOn }:{user:any,
         const genres = e.target.className
         console.log(genres)
       setGenres(e => [...e, genres])
-      }} />
+      }} /> */}
+      {}
       <button onClick={uploadFile}> Upload Image</button>
       {/* {PostUrls.map((url) => {
 

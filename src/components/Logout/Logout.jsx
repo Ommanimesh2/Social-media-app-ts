@@ -1,5 +1,5 @@
 import React from 'react'
-import { logout } from '../../firebase/firebaseConfig'
+import { logout } from '../../services/firebase/firebaseConfig'
 import { useNavigate } from 'react-router-dom'
 import './Logout.css'
 

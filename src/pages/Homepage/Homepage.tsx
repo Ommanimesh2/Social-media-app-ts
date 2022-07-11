@@ -1,17 +1,17 @@
 import React from 'react'
-import PostUpload from '../PostUpload/PostUpload';
+import PostUpload from '../../components/Post/PostUpload';
 import { getAuth } from 'firebase/auth';
 import { onAuthStateChanged } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
-import Navbar from '../Navbar/Navbar';
-import { auth } from '../../firebase/firebaseConfig';
+import Navbar from '../../components/Navbar/Navbar';
+import { auth } from '../../services/firebase/firebaseConfig';
 import { useState } from 'react';
 import { collection, query, where, getDocs, doc, getDoc, onSnapshot } from "firebase/firestore";
-import { db } from '../../firebase/firebaseConfig';
+import { db } from '../../services/firebase/firebaseConfig';
 import { useEffect } from 'react';
 import intersect from '../../utils/commonInArr';
-import ShowPosts from '../showPosts/ShowPosts';
-import { userData } from './home';
+import ShowPosts from '../../components/PostCard/ShowPosts';
+import { userData } from '../../types/home';
 
 const Homepage = () => {
   const [user, loading, error] = useAuthState(auth)

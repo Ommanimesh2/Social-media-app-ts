@@ -1,14 +1,29 @@
-import { Outlet, Link } from "react-router-dom";
-import './App.css'
-export default function App() {
+
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Login from "./components/Login/Login";
+import Signup from "./components/Signup/Signup";
+import Homepage from "./pages/Homepage/Homepage";
+import Home from "./pages/Home";
+
+import React from 'react'
+
+const App = () => {
   return (
-    <div>
-      <h1>Omm's social media</h1>
-      <nav>
-        <Link to="/login">Login</Link> |{" "}
-        <Link to="/signup">Signup</Link>
-      </nav>
-      <Outlet />
-    </div>
-  );
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Home/>}>
+        <Route path="login" element={<Login />} />
+        <Route path="signup" element={<Signup />}/>
+      </Route>
+      <Route path="homepage" element={<Homepage/>}/>
+    </Routes>
+  </BrowserRouter>
+  )
 }
+
+export default App
+
+
+  
